@@ -1,0 +1,44 @@
+# ./docker-compose.yaml
+version: "3.8"
+services:
+  api:
+    container_name: api
+    build:
+      context: ./api/
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: "./api"
+        target: "/api"
+    
+  frontend:
+    build:
+      context: ./frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: bind
+        source: "./frontend"
+        target: "/app"
+    environment:
+      - WATCHPACK_POLLING=true
+    command: sh -c "npm run dev"
+
+  pgsql:
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: ./db/
+    hostname: ${HOSTNAME}
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_USER=${USER_NAME}
+      - POSTGRES_PASSWORD=${USER_PASS}
+    volumes:
+      - db_store:/var/lib/postgresql/data
+
+volumes:
+  db_store:
