@@ -2,13 +2,13 @@
 create-api:
 	docker compose run api sh
 
-start-api:
-	docker compose up api --build
-
 create-frontend:
 	docker compose run frontend sh
-start-frontend:
-	docker compose up frontend --build
 
 postgres:
-	docker compose up pgsql
+	docker compose up pgsql --build
+
+start:
+	docker compose up pgsql --build
+	docker compose up api --build
+	docker compose up frontend --build

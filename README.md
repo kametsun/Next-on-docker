@@ -3,7 +3,8 @@
 ## API server
 1. Create api server
 ```
-$ docker compose run api sh
+$ docker compose run api sh     #windows
+$ make create-api
 ```
 
 2. Initialize the module
@@ -33,15 +34,11 @@ RUN go build -o main .
 CMD ["go", "run", "main.go"]
 ```
 
-5. Start up api server
-```
-$ docker compose up api --build
-```
-
 ## Frontend
 1. Into frontend server
 ```
-$ docker compose run frontend sh
+$ docker compose run frontend sh    # windows
+$ make create-frontend
 ```
 
 2. Remove Dockerfile
@@ -87,17 +84,13 @@ RUN npm run build
 CMD ["npm","run","dev"]
 ```
 
-6. Start frontend server
-```
-$ docker compose up frontend --build
-```
-
 ## DB(PostgreSQL)
-If you have already installed Make, run this
 ```
+$ docker compose up postgres --build    # windows
 $ make postgres
 ```
-If you haven't done
+
+## Build app
 ```
-$docker compose up postgres
+$ make start
 ```
