@@ -39,6 +39,7 @@ services:
     environment:
       - POSTGRES_USER=${USER_NAME}
       - POSTGRES_PASSWORD=${USER_PASS}
+      - POSTGRES_DB=db
     volumes:
       - db_store:/var/lib/postgresql/data
 
