@@ -9,6 +9,5 @@ postgres:
 	docker compose up pgsql --build
 
 start:
-	docker compose up pgsql --build
 	docker compose up api --build
 	docker compose up frontend --build
