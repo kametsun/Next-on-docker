@@ -89,8 +89,3 @@ CMD ["npm","run","dev"]
 $ docker compose up postgres --build    # windows
 $ make postgres
 ```
-
-## Build app
-```
-$ make start
-```
