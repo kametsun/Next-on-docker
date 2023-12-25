@@ -14,6 +14,7 @@ services:
         target: "/api"
     depends_on:
       - pgsql
+    networks: [ "next_go_develop" ]
     
   frontend:
     build:
@@ -42,6 +43,10 @@ services:
       - POSTGRES_DB=db
     volumes:
       - db_store:/var/lib/postgresql/data
+    networks: [ "next_go_develop" ]
 
 volumes:
   db_store:
+networks:
+  next_go_develop:
+  driver: bridge
